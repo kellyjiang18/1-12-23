@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 app.get('/',(req,res)=>{
     res.send('Hello there');
 });
@@ -25,4 +26,18 @@ app.get('/api/courses/:id',(req,res)=>{
 });
 app.listen(3000,()=>{
     console.log('Listening on part 3000 ...')
+});
+
+//http POST requests
+app.post('/api/courses',(req,res)=>{
+    if(req.body.name.length<3){
+        res.status(404).send("Name is required to be a minimum for 3 characters");  
+        return
+    }
+    const course = {
+        id: courses.length+1,
+        name:req.body.name
+    }
+    courses+=course;
+    res.send(course);
 });
