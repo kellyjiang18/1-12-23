@@ -67,7 +67,7 @@ app.delete('/api/courses/:id',(req,res)=>{
     }
     courses.splice(courses.indexOf(course),1);
     res.status(200).send("Course successfully deleted");
-})
+});
 
 //Different programs can make changes in the backend with all these different
 //requests. The GET request return the available information, the POST requests 
